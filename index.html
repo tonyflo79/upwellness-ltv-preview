@@ -588,60 +588,458 @@ button { font-family: var(--font-body); }
   }
 }
 
-/* === PRODUCT HIGHLIGHTS (Q&A) === */
-.highlights { padding: 100px 0; background: var(--color-bg-alt); }
-.qa-list { display: flex; flex-direction: column; gap: 36px; }
-.qa-item {}
-.qa-q { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-text); margin-bottom: 8px; }
-.qa-a { font-size: 16px; color: var(--color-text-secondary); line-height: 1.7; }
-.qa-proof { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 600; color: var(--color-primary); }
+/* ==========================================================
+   === STORY SECTION (Real Reason) — PQ "How Our Ancestors" pattern ===
+   ========================================================== */
+.story-section {
+  padding: 110px 0 90px;
+  background: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+.story-section::before {
+  content: '';
+  position: absolute;
+  width: 380px; height: 380px;
+  top: -120px; right: -120px;
+  background: radial-gradient(circle, rgba(59,172,193,0.07), transparent 70%);
+  pointer-events: none;
+}
+.story-section::after {
+  content: '';
+  position: absolute;
+  width: 320px; height: 320px;
+  bottom: -100px; left: -100px;
+  background: radial-gradient(circle, rgba(25,145,196,0.06), transparent 70%);
+  pointer-events: none;
+}
+.story-section__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 1;
+}
+.story-section__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.18;
+  color: var(--color-text);
+  text-align: center;
+  margin: 0 auto 64px;
+  max-width: 920px;
+  letter-spacing: -0.02em;
+}
+.story-section__title em {
+  font-style: normal;
+  color: var(--color-primary);
+}
 
-/* === PROBLEM/SOLUTION === */
-.problem { padding: 100px 0; background: var(--color-bg); }
-.problem__revelation { margin-bottom: 40px; }
-.problem__beat { background: var(--color-bg-alt); border-radius: var(--radius-card); padding: 28px 32px; margin-bottom: 20px; box-shadow: var(--shadow-card); transition: var(--transition-card); }
-.problem__beat:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
-.problem__beat-label { font-family: var(--font-accent); font-size: 14px; font-weight: 400; font-style: italic; color: var(--color-primary); margin-bottom: 8px; }
-.problem__beat-text { font-size: 16px; color: var(--color-text-secondary); line-height: 1.7; }
-.problem__anchor { font-family: var(--font-heading); font-size: 20px; font-weight: 700; text-align: center; color: var(--color-text); padding: 32px 24px; border: 2px solid var(--color-primary); border-radius: var(--radius-card); margin-top: 40px; line-height: 1.4; }
-.problem__silo { display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0; align-items: stretch; margin-top: 48px; }
-.problem__silo-side { background: var(--color-bg-alt); border-radius: var(--radius-card); padding: 24px; text-align: center; box-shadow: var(--shadow-card); }
-.problem__silo-side h4 { font-family: var(--font-heading); font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-.problem__silo-side ul { list-style: none; font-size: 14px; color: var(--color-text-secondary); }
-.problem__silo-side li { margin-bottom: 4px; }
-.problem__silo-wall { display: flex; align-items: center; justify-content: center; }
-.problem__silo-wall-line { width: 4px; height: 100%; background: repeating-linear-gradient(to bottom, #ccc 0, #ccc 8px, transparent 8px, transparent 16px); border-radius: 2px; }
-.problem__silo-bridge { text-align: center; margin-top: 20px; }
-.problem__silo-bridge span { display: inline-block; background: var(--gradient-cta); color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: var(--radius-button); box-shadow: 0 4px 16px rgba(59,172,193,0.25); }
+/* Alternating image+copy block */
+.story-block {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 72px;
+  align-items: center;
+  margin-bottom: 96px;
+}
+.story-block:last-child { margin-bottom: 56px; }
+.story-block--reverse { grid-template-columns: 1fr 1.05fr; }
+.story-block--reverse .story-block__media { order: 1; }
+.story-block--reverse .story-block__copy { order: 2; }
 
-/* === WHY IT WORKS === */
-.mechanism { padding: 100px 0; background: var(--color-bg-alt); }
-.phase-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 48px; }
-.phase-card { background: #fff; border-radius: var(--radius-card); padding: 28px 20px; text-align: center; position: relative; border-top: 4px solid #e0e8ec; box-shadow: var(--shadow-card); transition: var(--transition-card); border-left: none; }
-.phase-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
-.phase-card--active { border-top-color: transparent; background: linear-gradient(135deg, rgba(25,145,196,0.06), rgba(59,172,193,0.12)); border-left: 4px solid var(--color-primary); box-shadow: var(--shadow-card), 0 0 24px rgba(25,145,196,0.08); }
-.phase-card__number { font-family: var(--font-heading); font-size: 40px; font-weight: 900; color: #dce4e8; margin-bottom: 4px; line-height: 1; }
-.phase-card--active .phase-card__number { background: linear-gradient(135deg, #1991C4, #3BACC1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 44px; }
-.phase-card__name { font-family: var(--font-heading); font-size: 15px; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-.phase-card__desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
-.phase-card__who { margin-top: 10px; font-size: 12px; font-weight: 600; color: var(--color-primary); }
-.phase-card__arrow { position: absolute; right: -14px; top: 50%; transform: translateY(-50%); font-size: 20px; z-index: 1; background: linear-gradient(135deg, #3BACC1, #1991C4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; }
-.mechanism__doorman { text-align: center; background: #fff; border-radius: var(--radius-card); padding: 28px 32px; margin-bottom: 48px; border-left: 4px solid var(--color-primary); box-shadow: var(--shadow-card); }
-.mechanism__doorman p { font-size: 17px; color: var(--color-text); line-height: 1.6; }
-.mechanism__doorman strong { color: var(--color-primary); }
+.story-block__copy {
+  display: flex;
+  flex-direction: column;
+}
+.story-block__heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.22;
+  color: var(--color-text);
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.story-block__heading em {
+  font-style: normal;
+  color: var(--color-primary);
+}
+.story-block__copy p {
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--color-text-secondary);
+  margin-bottom: 18px;
+}
+.story-block__copy p:last-of-type { margin-bottom: 0; }
+.story-block__copy strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+.story-block__anchor {
+  margin-top: 22px;
+  padding: 22px 28px;
+  background: linear-gradient(135deg, rgba(59,172,193,0.08), rgba(25,145,196,0.04));
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 12px 12px 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.55;
+  font-style: italic;
+}
 
-/* Tabbed results */
-.tabs__nav { display: flex; justify-content: center; gap: 0; margin-bottom: 32px; border-bottom: 2px solid #e0e8ec; }
-.tabs__btn { padding: 12px 24px; font-size: 15px; font-weight: 600; color: var(--color-text-secondary); border: none; border-bottom: 3px solid transparent; background: none; cursor: pointer; margin-bottom: -2px; font-family: var(--font-heading); min-height: 48px; transition: var(--transition-card); }
-.tabs__btn.active { color: var(--color-primary); border-image: linear-gradient(90deg, #3BACC1, #1991C4) 1; transform: scale(1.04); }
-.tabs__panel { display: none; }
-.tabs__panel.active { display: block; animation: fadeTabIn 0.35s ease; }
-@keyframes fadeTabIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-.tabs__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.tabs__stat-card { text-align: center; padding: 28px; background: #fff; border-radius: var(--radius-card); box-shadow: var(--shadow-card); transition: var(--transition-card); }
-.tabs__stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
-.tabs__stat-num { font-family: var(--font-heading); font-size: 48px; font-weight: 800; line-height: 1; background: linear-gradient(135deg, #1991C4, #0d6e94); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.tabs__stat-desc { font-size: 14px; color: var(--color-text-secondary); margin-top: 8px; }
+/* Polaroid-style media frame (Block A) */
+.story-block__media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.story-block__polaroid {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: #FFFFFF;
+  padding: 18px 18px 22px;
+  border: 3px dashed var(--color-primary);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(2,48,71,0.12);
+  transform: rotate(-1.5deg);
+  transition: transform 0.4s ease;
+}
+.story-block__polaroid:hover { transform: rotate(0deg) scale(1.02); }
+.story-block__polaroid img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+.story-block__annotation {
+  position: absolute;
+  bottom: -22px;
+  right: -16px;
+  background: var(--color-secondary);
+  color: #FFFFFF;
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  font-style: italic;
+  padding: 12px 22px;
+  border-radius: 100px;
+  box-shadow: 0 8px 24px rgba(25,145,196,0.35);
+  transform: rotate(2deg);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* Oval-framed media (Block B) */
+.story-block__oval {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4/5;
+  border-radius: 230px / 280px;
+  overflow: hidden;
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 24px 60px rgba(2,48,71,0.18);
+  transition: transform 0.4s ease;
+}
+.story-block__oval:hover { transform: translateY(-4px); }
+.story-block__oval img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.story-block__oval::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(2,48,71,0.15));
+  pointer-events: none;
+}
+/* Decorative splashes around oval */
+.story-block__media-deco {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.story-block__media-deco--1 {
+  top: -10px; left: -20px;
+  background: radial-gradient(circle, rgba(59,172,193,0.4), transparent 70%);
+}
+.story-block__media-deco--2 {
+  bottom: 20px; right: -30px;
+  width: 90px; height: 90px;
+  background: radial-gradient(circle, rgba(240,237,123,0.5), transparent 70%);
+}
+
+/* Section CTA */
+.story-section__cta {
+  text-align: center;
+  margin-top: 24px;
+}
+.story-section__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 44px;
+  background: var(--gradient-cta);
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(59,172,193,0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.story-section__cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(59,172,193,0.5);
+}
+.story-section__cta-meta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+.story-section__cta-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.story-section__cta-meta svg { width: 14px; height: 14px; fill: var(--color-primary); }
+
+/* ==========================================================
+   === MECHANISM SECTION (Four Phases) — PQ "Our Belief" pattern ===
+   ========================================================== */
+.mechanism-section {
+  padding: 120px 0;
+  background: var(--color-bg-alt);
+  position: relative;
+  overflow: hidden;
+}
+/* Half-shape background accent on right (matching PQ "Our Belief") */
+.mechanism-section::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 45%;
+  background: linear-gradient(135deg, rgba(25,145,196,0.08), rgba(59,172,193,0.04));
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+.mechanism-section__inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.mechanism-section__copy {
+  display: flex;
+  flex-direction: column;
+}
+.mechanism-section__label {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--color-primary);
+  margin-bottom: 14px;
+  letter-spacing: 0.4px;
+}
+.mechanism-section__heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-text);
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+.mechanism-section__heading em {
+  font-style: normal;
+  color: var(--color-primary);
+}
+.mechanism-section__copy p {
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--color-text-secondary);
+  margin-bottom: 18px;
+}
+.mechanism-section__copy p strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+.mechanism-section__cta {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 44px;
+  background: var(--gradient-cta);
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  border-radius: 100px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(59,172,193,0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  align-self: flex-start;
+}
+.mechanism-section__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(59,172,193,0.5);
+}
+.mechanism-section__badges {
+  display: flex;
+  gap: 22px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.mechanism-section__badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.mechanism-section__badge-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mechanism-section__badge-check svg { width: 11px; height: 8px; }
+.mechanism-section__badge-check svg path { stroke: #fff; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Custom circular four-phase diagram */
+.fourphase {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+.fourphase__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.fourphase__pod {
+  cursor: default;
+}
+.fourphase__pod-circle {
+  fill: #FFFFFF;
+  stroke: var(--color-primary);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 4px 16px rgba(2,48,71,0.12));
+  transition: all 0.4s ease;
+}
+.fourphase__pod--inactive .fourphase__pod-circle {
+  stroke: #c7d4dc;
+  stroke-width: 2;
+  fill: #f4f8fa;
+}
+.fourphase__pod--active .fourphase__pod-circle {
+  fill: url(#fourphase-grad);
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  filter: drop-shadow(0 6px 24px rgba(25,145,196,0.4));
+}
+.fourphase__num {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  fill: var(--color-primary);
+}
+.fourphase__pod--inactive .fourphase__num { fill: #98a8b3; }
+.fourphase__pod--active .fourphase__num { fill: #FFFFFF; }
+.fourphase__icon {
+  font-size: 28px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.fourphase__label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  text-anchor: middle;
+  fill: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.fourphase__pod--inactive .fourphase__label { fill: #98a8b3; }
+.fourphase__pod--active .fourphase__label { fill: var(--color-primary); }
+.fourphase__sublabel {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  text-anchor: middle;
+  fill: var(--color-text-secondary);
+}
+.fourphase__pod--inactive .fourphase__sublabel { fill: #b0bec5; }
+.fourphase__pod--active .fourphase__sublabel { fill: var(--color-primary); font-weight: 700; }
+.fourphase__connector {
+  fill: none;
+  stroke: #c7d4dc;
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+}
+.fourphase__connector--active {
+  stroke: var(--color-primary);
+  stroke-dasharray: none;
+  stroke-width: 2.5;
+}
+.fourphase__center {
+  fill: var(--color-text);
+}
+.fourphase__center-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  fill: #FFFFFF;
+  text-anchor: middle;
+}
+.fourphase__center-sub {
+  font-family: 'DM Sans', sans-serif;
+  fill: rgba(255,255,255,0.7);
+  text-anchor: middle;
+}
+.fourphase__rotate {
+  transform-origin: center;
+  animation: fourphaseSpin 60s linear infinite;
+}
+@keyframes fourphaseSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
 /* === EXPERT CREDIBILITY === */
 .expert { padding: 100px 0; background: var(--color-bg); }
@@ -805,10 +1203,16 @@ button { font-family: var(--font-body); }
 .footer__copy { font-size: 12px; color: #999; text-align: center; }
 
 /* === RESPONSIVE === */
+@media (max-width: 1023px) {
+  .story-section__title { font-size: 38px; }
+  .story-block { gap: 48px; }
+  .story-block__heading { font-size: 28px; }
+  .mechanism-section__inner { gap: 56px; }
+  .mechanism-section__heading { font-size: 36px; }
+  .fourphase { max-width: 440px; }
+}
 @media (max-width: 768px) {
   .section-title { font-size: 30px; }
-  .phase-flow { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .phase-card__arrow { display: none; }
   .expert__grid { grid-template-columns: 1fr; }
   .expert__img { max-width: 200px; margin: 0 auto; }
   .ingredients__grid { grid-template-columns: 1fr; }
@@ -817,19 +1221,37 @@ button { font-family: var(--font-body); }
   .comparison { overflow-x: auto; }
   .comparison table { min-width: 600px; }
   .pricing__grid { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
-  .problem__silo { grid-template-columns: 1fr; gap: 0; }
-  .problem__silo-wall { padding: 12px 0; }
-  .problem__silo-wall-line { width: 100%; height: 4px; background: repeating-linear-gradient(to right, #ccc 0, #ccc 8px, transparent 8px, transparent 16px); }
-  .tabs__grid { grid-template-columns: 1fr; }
-  .tabs__nav { flex-wrap: wrap; }
-  .tabs__btn { padding: 10px 16px; font-size: 13px; }
-  .highlights, .problem, .mechanism, .expert, .ingredients, .timeline, .comparison, .howto, .reviews, .faq, .pricing, .guarantee { padding: 64px 0; }
+  .expert, .ingredients, .timeline, .comparison, .howto, .reviews, .faq, .pricing, .guarantee { padding: 64px 0; }
   .cta-banner { padding: 56px 0; }
   .cta-banner__title { font-size: 28px; }
+
+  /* Story section mobile */
+  .story-section { padding: 72px 0 60px; }
+  .story-section__title { font-size: 30px; margin-bottom: 48px; }
+  .story-block { grid-template-columns: 1fr; gap: 36px; margin-bottom: 64px; }
+  .story-block--reverse .story-block__media { order: 0; }
+  .story-block--reverse .story-block__copy { order: 1; }
+  .story-block__heading { font-size: 26px; }
+  .story-block__copy p { font-size: 16px; }
+  .story-block__polaroid { max-width: 380px; margin: 0 auto; }
+  .story-block__oval { max-width: 340px; margin: 0 auto; }
+  .story-block__annotation { font-size: 15px; padding: 10px 18px; right: 0; bottom: -16px; }
+
+  /* Mechanism section mobile */
+  .mechanism-section { padding: 72px 0; }
+  .mechanism-section::before { width: 100%; clip-path: none; opacity: 0.5; }
+  .mechanism-section__inner { grid-template-columns: 1fr; gap: 48px; padding: 0 24px; }
+  .mechanism-section__heading { font-size: 32px; }
+  .mechanism-section__copy p { font-size: 16px; }
+  .mechanism-section__cta { align-self: stretch; justify-content: center; }
+  .fourphase { max-width: 360px; }
 }
 @media (max-width: 480px) {
   .howto__steps { grid-template-columns: 1fr; max-width: 280px; margin-left: auto; margin-right: auto; }
-  .phase-flow { grid-template-columns: 1fr; }
+  .story-section__title { font-size: 26px; }
+  .story-block__heading { font-size: 22px; }
+  .mechanism-section__heading { font-size: 28px; }
+  .fourphase { max-width: 300px; }
 }
 </style>
 </head>
@@ -886,9 +1308,9 @@ button { font-family: var(--font-body); }
       <!-- Heading -->
       <div class="default-banner__heading-container">
         <h1 class="default-banner__heading">
-          <span class="default-banner__heading-highlight">STOP THIRSTING.</span>
-          <span class="default-banner__heading-mid">All Four Phases of Hydration in One Packet.</span>
-          <span class="default-banner__heading-end">The first formula with taurine and liver-support botanicals for complete cellular hydration that actually reaches your cells.</span>
+          <span class="default-banner__heading-highlight">Kiss Low Energy Goodbye</span>
+          <span class="default-banner__heading-mid">By Clearing And Hydrating Your Cells</span>
+          <span class="default-banner__heading-end">There's one nutrient that supports liver detox and true four phase hydration — and no other electrolyte formula has it.</span>
         </h1>
       </div>
 
@@ -1155,242 +1577,174 @@ button { font-family: var(--font-body); }
 </div>
 
 <!-- ============================================================ -->
-<!-- SECTION 3: PRODUCT HIGHLIGHTS (Q&A)                           -->
+<!-- SECTION 3: STORY — THE REAL REASON / LEAKY SYSTEM             -->
+<!-- (PQ "How Our Ancestors Thrived" pattern: centered headline    -->
+<!--  + 2 alternating image+copy blocks ending with CTA)           -->
 <!-- ============================================================ -->
-<section class="highlights anim-section">
-  <div class="container--mid">
-    <p class="section-label">Get to Know LTV</p>
-    <h2 class="section-title">Everything You Need to Know</h2>
+<section class="story-section anim-section" id="story">
+  <div class="story-section__inner">
 
-    <div class="qa-list">
+    <h2 class="story-section__title">
+      The Real Reason You Drink Lots of Water And <em>Still Feel Dehydrated</em>
+    </h2>
 
-      <div class="qa-item anim-child">
-        <p class="qa-q">What is LTV?</p>
-        <p class="qa-a">LTV is a daily hydration + liver support powder that delivers Fourth Phase Hydration. It combines clinical-dose taurine (1,000mg) with essential electrolytes and three liver-supporting botanicals (Milk Thistle, Dandelion Root, Schisandra Berry) in a zero-sugar stick pack. Mix one packet into 12-16oz of cold water every morning.</p>
-        <span class="qa-proof">Formulated by Dr. Joshua Levitt, ND &mdash; 20+ years clinical practice</span>
+    <!-- Block A — copy left, polaroid image right -->
+    <div class="story-block">
+      <div class="story-block__copy">
+        <p>Most people think dehydration is not getting enough water or wrong electrolytes. So they drink more, try expensive powders, force down 8&ndash;15 glasses.</p>
+        <p><strong>But they still feel dried out, exhausted, foggy.</strong></p>
+        <p>Why? Because it's the <strong>LIVER</strong> that produces an osmolyte that controls whether water stays inside cells or passes right through.</p>
+        <p>When the liver is overwhelmed (processed foods, medications, 80,000+ environmental chemicals), taurine production drops. Cells lose the ability to hold water. Your body is flooded with water, but your cells are bone&#8209;dry.</p>
       </div>
-
-      <div class="qa-item anim-child">
-        <p class="qa-q">Who is it for?</p>
-        <p class="qa-a">Adults 35+ who drink plenty of water but still feel dehydrated, tired by 2 PM, or notice their skin looks dull. If you've tried 3-5 hydration brands and they haven't delivered lasting results, LTV addresses something they don't: the reason your cells can't hold water in the first place.</p>
-        <span class="qa-proof">NHANES data: 1 in 3 American adults have subclinical liver stress</span>
-      </div>
-
-      <div class="qa-item anim-child">
-        <p class="qa-q">What makes it different from LMNT or Liquid IV?</p>
-        <p class="qa-a">LMNT and Liquid IV deliver electrolytes &mdash; that's Phase 2 of hydration. They stop there. LTV is the only formula that also supports Phase 3 (liver processing via taurine and botanicals) and Phase 4 (cellular water retention). Zero competitors include taurine or liver botanicals. That's not a minor difference &mdash; it's an entirely different category.</p>
-        <span class="qa-proof">Taurine = 0mg in LMNT, Liquid IV, and DripDrop</span>
-      </div>
-
-      <div class="qa-item anim-child">
-        <p class="qa-q">How does it taste?</p>
-        <p class="qa-a">Clean citrus &mdash; refreshing, not artificial. No sugar, no stevia aftertaste, no chalky residue. Customers say they actually look forward to it every morning. Two new flavors launching this week.</p>
-        <span class="qa-proof">"It's refreshing, not artificial. I actually look forward to this one every day." &mdash; Mike C.</span>
-      </div>
-
-      <div class="qa-item anim-child">
-        <p class="qa-q">What if it doesn't work for me?</p>
-        <p class="qa-a">Try LTV for up to 60 days. If you don't feel the difference &mdash; more energy, better hydration, clearer skin &mdash; contact us for a full refund. No questions asked. You keep any bonuses. We call it The Phase 4 Promise.</p>
-        <span class="qa-proof">60-Day Money-Back Guarantee &mdash; zero risk</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 4: PROBLEM/SOLUTION — THE HYDRATION PARADOX            -->
-<!-- ============================================================ -->
-<section class="problem anim-section" id="problem">
-  <div class="container--mid">
-    <p class="section-label">The Root Cause</p>
-    <h2 class="section-title">The Hydration Paradox</h2>
-    <p class="section-sub">The reason you're still dehydrated has nothing to do with how much water you drink &mdash; it has everything to do with your liver.</p>
-
-    <div class="problem__revelation">
-
-      <div class="problem__beat anim-child">
-        <p class="problem__beat-label">What They Think</p>
-        <p class="problem__beat-text">Dehydration = not enough water or wrong electrolytes. So they drink more, try expensive powders, force down 8-15 glasses. Still dried out, exhausted, foggy.</p>
-      </div>
-
-      <div class="problem__beat anim-child">
-        <p class="problem__beat-label">What It Really Is</p>
-        <p class="problem__beat-text">The liver produces taurine &mdash; the osmolyte that controls whether water STAYS inside cells or passes right through. When liver is overwhelmed (processed foods, medications, 80,000+ environmental chemicals), taurine production drops. Cells lose ability to hold water. Your body is flooded with water, but your cells are bone-dry.</p>
-      </div>
-
-      <div class="problem__beat anim-child">
-        <p class="problem__beat-label">Why Nothing Worked</p>
-        <p class="problem__beat-text">More water = pouring into a system that can't retain it. Electrolyte drinks = delivering minerals but ignoring the PROCESSOR. Standard tests = don't measure subclinical liver stress or taurine levels. Every hydration product fights over electrolyte ratios while ignoring the organ that determines whether those electrolytes reach your cells.</p>
-      </div>
-
-    </div>
-
-    <div class="problem__anchor">
-      Every hydration product optimizes the INPUT (water, electrolytes). None of them fix the PROCESSOR (your liver). Fix the processor, and the input finally works.
-    </div>
-
-    <!-- Silo Diagram -->
-    <div class="problem__silo">
-      <div class="problem__silo-side">
-        <h4 style="color: var(--color-text-secondary);">Hydration Brands</h4>
-        <ul>
-          <li>LMNT</li>
-          <li>Liquid IV</li>
-          <li>DripDrop</li>
-          <li>Nuun</li>
-        </ul>
-        <p style="font-size:12px; margin-top:8px; color:#999;">Sell minerals. Zero liver support.</p>
-      </div>
-      <div class="problem__silo-wall">
-        <div class="problem__silo-wall-line"></div>
-      </div>
-      <div class="problem__silo-side">
-        <h4 style="color: var(--color-text-secondary);">Liver Brands</h4>
-        <ul>
-          <li>1MD LiverMD</li>
-          <li>PureHealth</li>
-          <li>Ultra Liver</li>
-        </ul>
-        <p style="font-size:12px; margin-top:8px; color:#999;">Sell botanicals. Zero hydration.</p>
+      <div class="story-block__media">
+        <div class="story-block__polaroid">
+          <img src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/d0ff8742-e9ac-4376-b2f4-dd6ba2a82c6b" alt="LTV — water and liver support">
+          <div class="story-block__annotation">It's not the water. It's the processor.</div>
+        </div>
       </div>
     </div>
-    <div class="problem__silo-bridge">
-      <span>LTV &mdash; The Only Product That Bridges Both Sides</span>
+
+    <!-- Block B — image left (oval), copy right -->
+    <div class="story-block story-block--reverse">
+      <div class="story-block__media">
+        <div class="story-block__media-deco story-block__media-deco--1"></div>
+        <div class="story-block__media-deco story-block__media-deco--2"></div>
+        <div class="story-block__oval">
+          <img src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/c9930c01-736d-4060-beba-7401ae87507a" alt="LTV cellular hydration">
+        </div>
+      </div>
+      <div class="story-block__copy">
+        <h3 class="story-block__heading">It's Like Pouring More Water Into a <em>Leaky System</em></h3>
+        <p>Electrolyte drinks deliver minerals but ignore the <strong>processor</strong>. Every hydration product fights over electrolyte ratios while ignoring the organ that determines whether those electrolytes ever reach your cells.</p>
+        <p>Every hydration product optimizes the <strong>INPUT</strong> (water, electrolytes). None of them fix the <strong>PROCESSOR</strong> (your liver). Fix the processor, and the input finally reaches your cells.</p>
+        <div class="story-block__anchor">
+          This is the real secret.
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="story-section__cta">
+      <a href="#pricing" class="story-section__cta-btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'}); return false;">Try LTV &mdash; Save 64%</a>
+      <div class="story-section__cta-meta">
+        <span><svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="6"/></svg> 60-Day Money Back Guarantee</span>
+        <span><svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="6"/></svg> Free Shipping</span>
+      </div>
     </div>
 
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 5: WHY IT WORKS — FOURTH PHASE HYDRATION              -->
+<!-- SECTION 4: MECHANISM — TRUE CELLULAR HYDRATION 4 PHASES        -->
+<!-- (PQ "Our Belief" pattern: 2-col split with copy left,         -->
+<!--  custom circular 4-phase scientific graphic right)            -->
 <!-- ============================================================ -->
-<section class="mechanism anim-section" id="mechanism">
-  <div class="container">
-    <p class="section-label">The Science</p>
-    <h2 class="section-title">Fourth Phase Hydration</h2>
-    <p class="section-sub">There are four phases of hydration. Every electrolyte brand stops at two. LTV delivers all four.</p>
+<section class="mechanism-section anim-section" id="mechanism">
+  <div class="mechanism-section__inner">
 
-    <!-- 4-Phase Visual Flow -->
-    <div class="phase-flow">
-      <div class="phase-card anim-child">
-        <div class="phase-card__number">1</div>
-        <div class="phase-card__name">Intake</div>
-        <div class="phase-card__desc">You drink water.</div>
-        <div class="phase-card__who">Everyone</div>
-        <span class="phase-card__arrow">&rarr;</span>
-      </div>
-      <div class="phase-card anim-child">
-        <div class="phase-card__number">2</div>
-        <div class="phase-card__name">Mineralize</div>
-        <div class="phase-card__desc">You add electrolytes (sodium, potassium, magnesium).</div>
-        <div class="phase-card__who">LMNT, Liquid IV, DripDrop</div>
-        <span class="phase-card__arrow">&rarr;</span>
-      </div>
-      <div class="phase-card phase-card--active anim-child">
-        <div class="phase-card__number">3</div>
-        <div class="phase-card__name">Process</div>
-        <div class="phase-card__desc">Your liver produces taurine &mdash; the osmolyte that controls whether water enters and stays inside your cells.</div>
-        <div class="phase-card__who">ONLY LTV</div>
-        <span class="phase-card__arrow">&rarr;</span>
-      </div>
-      <div class="phase-card phase-card--active anim-child">
-        <div class="phase-card__number">4</div>
-        <div class="phase-card__name">Absorb</div>
-        <div class="phase-card__desc">Water is retained inside cells. True cellular hydration.</div>
-        <div class="phase-card__who">The Result &mdash; Only via LTV</div>
-      </div>
-    </div>
+    <!-- LEFT: Copy -->
+    <div class="mechanism-section__copy">
+      <p class="mechanism-section__label">The Mechanism:</p>
+      <h2 class="mechanism-section__heading">
+        True Cellular Hydration Happens in <em>Four Phases</em>
+      </h2>
+      <p>Water and electrolytes are the first two phases. Almost everyone does those. Yet if that were enough, everyone would be fully hydrated &mdash; and not suffering from fatigue, brain fog, or other issues. But they're not.</p>
+      <p>Because there's a <strong>third phase</strong> &mdash; where you need a critical nutrient called <strong>taurine</strong>, which gets the water INTO your cell (and keeps it there).</p>
+      <p>That leads to the <strong>fourth phase</strong>, when you have sufficient water, electrolytes, taurine, and a healthy liver. And you're finally able to KEEP water in your cells &mdash; for maximum energy and performance.</p>
 
-    <!-- Doorman Metaphor -->
-    <div class="mechanism__doorman">
-      <p>Phase 2 gets water <strong>"to the door."</strong> Phase 4 gets water <strong>"through it."</strong> Taurine is the doorman.</p>
-    </div>
+      <a href="#pricing" class="mechanism-section__cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'}); return false;">Get LTV Today</a>
 
-    <!-- Tabbed Clinical Results -->
-    <p class="section-label" style="margin-top:48px;">What the Research Shows</p>
-    <h3 style="font-family:var(--font-heading); font-size:28px; font-weight:700; text-align:center; margin-bottom:32px;">Results Supported by 34 Clinical Trials</h3>
-
-    <div class="tabs__nav">
-      <button class="tabs__btn active" onclick="showResultTab('hydration', this)">Hydration</button>
-      <button class="tabs__btn" onclick="showResultTab('energy', this)">Energy</button>
-      <button class="tabs__btn" onclick="showResultTab('liver', this)">Liver Health</button>
-      <button class="tabs__btn" onclick="showResultTab('skin', this)">Skin</button>
-    </div>
-
-    <div id="tab-hydration" class="tabs__panel active">
-      <div class="tabs__grid">
-        <div class="tabs__stat-card anim-child">
-          <div class="tabs__stat-num" data-count-target="1000" data-count-suffix="mg">1,000mg</div>
-          <div class="tabs__stat-desc">Clinically meaningful taurine dose per serving &mdash; the osmolyte that controls cellular water retention</div>
+      <div class="mechanism-section__badges">
+        <div class="mechanism-section__badge">
+          <span class="mechanism-section__badge-check"><svg viewBox="0 0 11 8"><path d="M1 4 L4 7 L10 1"/></svg></span>
+          60-Day Money Back Guarantee
         </div>
-        <div class="tabs__stat-card anim-child">
-          <div class="tabs__stat-num" data-count-target="34">34</div>
-          <div class="tabs__stat-desc">Randomized controlled trials supporting taurine's role in hydration markers and fluid balance</div>
-        </div>
-        <div class="tabs__stat-card anim-child">
-          <div class="tabs__stat-num" data-count-target="3">3</div>
-          <div class="tabs__stat-desc">Essential electrolytes (sodium, potassium, magnesium) from premium sources including Aquamin</div>
-        </div>
-        <div class="tabs__stat-card anim-child">
-          <div class="tabs__stat-num">0g</div>
-          <div class="tabs__stat-desc">Sugar per serving &mdash; vs. 11g in Liquid IV and 6g in DripDrop</div>
+        <div class="mechanism-section__badge">
+          <span class="mechanism-section__badge-check"><svg viewBox="0 0 11 8"><path d="M1 4 L4 7 L10 1"/></svg></span>
+          Free Shipping
         </div>
       </div>
     </div>
 
-    <div id="tab-energy" class="tabs__panel">
-      <div class="tabs__grid">
-        <div class="tabs__stat-card">
-          <div class="tabs__stat-num">2 PM</div>
-          <div class="tabs__stat-desc">Customers report steady energy past the typical afternoon crash point</div>
-        </div>
-        <div class="tabs__stat-card">
-          <div class="tabs__stat-num" data-count-target="300" data-count-suffix="+">300+</div>
-          <div class="tabs__stat-desc">Enzymatic reactions supported by Aquamin magnesium &mdash; including cellular energy production</div>
-        </div>
-        <div class="tabs__stat-card">
-          <div class="tabs__stat-num">0</div>
-          <div class="tabs__stat-desc">Caffeine, stimulants, or artificial energy ingredients. Clean, sustained energy from cellular hydration.</div>
-        </div>
-      </div>
-    </div>
+    <!-- RIGHT: Circular Four-Phase Diagram (custom SVG) -->
+    <div class="fourphase">
+      <svg class="fourphase__svg" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="fourphase-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3BACC1"/>
+            <stop offset="100%" stop-color="#1991C4"/>
+          </linearGradient>
+          <linearGradient id="fourphase-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3BACC1" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#1991C4" stop-opacity="0.05"/>
+          </linearGradient>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#1991C4"/>
+          </marker>
+          <marker id="arrow-inactive" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#c7d4dc"/>
+          </marker>
+        </defs>
 
-    <div id="tab-liver" class="tabs__panel">
-      <div class="tabs__grid">
-        <div class="tabs__stat-card">
-          <div class="tabs__stat-num" data-count-target="2000" data-count-suffix="+">2,000+</div>
-          <div class="tabs__stat-desc">Years of documented use for Milk Thistle (silymarin) in liver support &mdash; strong evidence base</div>
-        </div>
-        <div class="tabs__stat-card">
-          <div class="tabs__stat-num">1 in 3</div>
-          <div class="tabs__stat-desc">American adults have subclinical liver stress (NHANES data) &mdash; most never tested for it</div>
-        </div>
-        <div class="tabs__stat-card">
-          <div class="tabs__stat-num" data-count-target="3">3</div>
-          <div class="tabs__stat-desc">Liver-supporting botanicals: Milk Thistle, Dandelion Root, and Schisandra Berry. Research supported.</div>
-        </div>
-        <div class="tabs__stat-card">
-          <div class="tabs__stat-num" data-count-target="80000" data-count-suffix="+">80,000+</div>
-          <div class="tabs__stat-desc">Environmental chemicals your liver processes daily &mdash; the hidden load that depletes taurine production</div>
-        </div>
-      </div>
-    </div>
+        <!-- Outer decorative ring -->
+        <circle cx="260" cy="260" r="240" fill="url(#fourphase-ring)" stroke="rgba(25,145,196,0.15)" stroke-width="1"/>
+        <circle cx="260" cy="260" r="200" fill="none" stroke="rgba(25,145,196,0.1)" stroke-width="1" stroke-dasharray="2 6"/>
 
-    <div id="tab-skin" class="tabs__panel">
-      <div class="tabs__grid">
-        <div class="tabs__stat-card">
-          <div class="tabs__stat-num">Weeks 2-4</div>
-          <div class="tabs__stat-desc">When customers typically report healthier-looking skin and improved skin clarity</div>
-        </div>
-        <div class="tabs__stat-card">
-          <div class="tabs__stat-num">Dual</div>
-          <div class="tabs__stat-desc">Hydration + detoxification support. Skin health is supported from both directions &mdash; inside the cell and out.</div>
-        </div>
-      </div>
-    </div>
+        <!-- Connecting arcs (cyclical flow) -->
+        <!-- Phase 1 (top) → Phase 2 (right) -->
+        <path d="M 320 110 A 170 170 0 0 1 410 200" class="fourphase__connector"/>
+        <!-- Phase 2 (right) → Phase 3 (bottom) -->
+        <path d="M 410 320 A 170 170 0 0 1 320 410" class="fourphase__connector fourphase__connector--active"/>
+        <!-- Phase 3 (bottom) → Phase 4 (left) -->
+        <path d="M 200 410 A 170 170 0 0 1 110 320" class="fourphase__connector fourphase__connector--active"/>
+        <!-- Phase 4 (left) → Phase 1 (top) -->
+        <path d="M 110 200 A 170 170 0 0 1 200 110" class="fourphase__connector fourphase__connector--active"/>
 
-    <p style="text-align:center; font-size:11px; color:#999; margin-top:24px; font-style:italic;">Based on published peer-reviewed research. Individual results may vary. These statements have not been evaluated by the FDA.</p>
+        <!-- PHASE 1 — Top (Water, inactive-ish — everyone has it) -->
+        <g class="fourphase__pod fourphase__pod--inactive" transform="translate(260, 80)">
+          <circle cx="0" cy="0" r="62" class="fourphase__pod-circle"/>
+          <text class="fourphase__num" y="-12">01</text>
+          <text class="fourphase__icon" y="20" font-size="26">💧</text>
+          <text class="fourphase__label" y="92">WATER</text>
+          <text class="fourphase__sublabel" y="110">Intake</text>
+        </g>
+
+        <!-- PHASE 2 — Right (Electrolytes, inactive — competitors stop here) -->
+        <g class="fourphase__pod fourphase__pod--inactive" transform="translate(440, 260)">
+          <circle cx="0" cy="0" r="62" class="fourphase__pod-circle"/>
+          <text class="fourphase__num" y="-12">02</text>
+          <text class="fourphase__icon" y="22" font-size="22">⚡</text>
+          <text class="fourphase__label" y="92">ELECTROLYTES</text>
+          <text class="fourphase__sublabel" y="110">Mineralize</text>
+        </g>
+
+        <!-- PHASE 3 — Bottom (Taurine + Liver, ACTIVE — only LTV) -->
+        <g class="fourphase__pod fourphase__pod--active" transform="translate(260, 440)">
+          <circle cx="0" cy="0" r="62" class="fourphase__pod-circle"/>
+          <text class="fourphase__num" y="-12">03</text>
+          <text class="fourphase__icon" y="22" font-size="22">🧬</text>
+          <text class="fourphase__label" y="92">TAURINE</text>
+          <text class="fourphase__sublabel" y="110">Process &mdash; Only LTV</text>
+        </g>
+
+        <!-- PHASE 4 — Left (Cellular Hydration, ACTIVE — the result) -->
+        <g class="fourphase__pod fourphase__pod--active" transform="translate(80, 260)">
+          <circle cx="0" cy="0" r="62" class="fourphase__pod-circle"/>
+          <text class="fourphase__num" y="-12">04</text>
+          <text class="fourphase__icon" y="22" font-size="22">🔬</text>
+          <text class="fourphase__label" y="92">CELLULAR</text>
+          <text class="fourphase__sublabel" y="110">Retention</text>
+        </g>
+
+        <!-- Center hub -->
+        <circle cx="260" cy="260" r="58" fill="#023047"/>
+        <circle cx="260" cy="260" r="58" fill="none" stroke="#3BACC1" stroke-width="2" stroke-opacity="0.5"/>
+        <text x="260" y="252" class="fourphase__center-text" font-size="20">LTV</text>
+        <text x="260" y="276" class="fourphase__center-sub" font-size="9.5">FOURTH PHASE</text>
+        <text x="260" y="290" class="fourphase__center-sub" font-size="9.5">HYDRATION</text>
+      </svg>
+    </div>
 
   </div>
 </section>
