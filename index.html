@@ -93,6 +93,19 @@ button { font-family: var(--font-body); }
   z-index: 1;
   gap: 45px;
 }
+.countdown-header__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.countdown-header__logo img {
+  height: 32px;
+  width: auto;
+  filter: brightness(0) invert(1); /* white logo on dark bg */
+}
+@media (max-width: 767px) {
+  .countdown-header__logo img { height: 24px; }
+}
 .countdown-header__text {
   display: flex;
   align-items: center;
@@ -200,7 +213,8 @@ button { font-family: var(--font-body); }
   max-width: 440px;
   padding: 8px 10px;
   border-radius: 3px;
-  background: rgba(59, 172, 193, 0.35);
+  background: rgba(59, 172, 193, 0.95);
+  border: 1px solid rgba(255,255,255,0.3);
   text-decoration: none;
 }
 .default-banner__alert-inner {
@@ -210,10 +224,11 @@ button { font-family: var(--font-body); }
   gap: 4px;
 }
 .default-banner__alert-text {
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 700;
+  font-size: 19px;
   line-height: 1.2;
-  color: var(--db-alert-yellow);
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
   text-transform: uppercase;
   letter-spacing: 0.6px;
 }
@@ -362,75 +377,30 @@ button { font-family: var(--font-body); }
   color: rgb(0, 0, 0);
 }
 
-/* Reviews carousel (right side) */
-.default-banner__reviews {
+/* Hero product image (right side) */
+.default-banner__product {
   position: relative;
-  width: 527px;
-  overflow: hidden;
-  flex-shrink: 0;
   z-index: 4;
-}
-.default-banner__reviews-track {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  animation: scrollReviews 20s linear infinite;
-}
-@keyframes scrollReviews {
-  0% { transform: translateY(0); }
-  25% { transform: translateY(0); }
-  30% { transform: translateY(-25%); }
-  50% { transform: translateY(-25%); }
-  55% { transform: translateY(-50%); }
-  75% { transform: translateY(-50%); }
-  80% { transform: translateY(-75%); }
-  95% { transform: translateY(-75%); }
-  100% { transform: translateY(0); }
-}
-.default-banner__review-card {
-  display: flex;
-  padding: 12.5px;
-  border: 2px solid var(--db-review-border);
-  border-radius: 10px;
-  background: white;
-  align-items: flex-start;
-  gap: 12.5px;
   flex-shrink: 0;
-}
-.default-banner__review-avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-.default-banner__review-body {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  justify-content: center;
 }
-.default-banner__review-stars {
-  display: flex;
-  gap: 2px;
+.default-banner__product img {
+  width: 480px;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 24px 60px rgba(2,48,71,0.25));
+  transition: transform 0.4s ease;
 }
-.default-banner__review-stars svg {
-  width: 16px;
-  height: 16px;
-  fill: #F59E0B;
+.default-banner__product img:hover {
+  transform: scale(1.03) rotate(1deg);
 }
-.default-banner__review-text {
-  font-weight: 400;
-  font-style: italic;
-  font-size: 15px;
-  line-height: 1.5;
-  color: rgb(0, 0, 0);
-  margin: 0px 0px 12px;
+@media (max-width: 1023px) {
+  .default-banner__product img { width: 380px; }
 }
-.default-banner__review-name {
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--db-dot-active);
-  letter-spacing: 0.6px;
+@media (max-width: 767px) {
+  .default-banner__product img { width: 280px; }
 }
 
 /* ============================
@@ -542,9 +512,6 @@ button { font-family: var(--font-body); }
   .default-banner__heading-mid {
     font-size: 30px;
   }
-  .default-banner__reviews {
-    width: 420px;
-  }
 }
 
 @media (max-width: 1023px) {
@@ -557,9 +524,6 @@ button { font-family: var(--font-body); }
   }
   .default-banner__heading-end {
     font-size: 20px;
-  }
-  .default-banner__reviews {
-    width: 360px;
   }
   .default-banner__cta-container {
     width: 100%;
@@ -603,10 +567,6 @@ button { font-family: var(--font-body); }
     justify-content: center;
     flex-wrap: wrap;
     padding: 0;
-  }
-  .default-banner__reviews {
-    width: 100%;
-    max-width: 527px;
   }
   .default-banner__social-proof {
     justify-content: center;
@@ -880,6 +840,9 @@ button { font-family: var(--font-body); }
 <!-- ============================================================ -->
 <div class="countdown-header">
   <div class="countdown-header__wrapper">
+    <div class="countdown-header__logo">
+      <img src="https://shop.upwellness.com/cdn/shop/files/SMALLER_HighRes_UpWellness_WithTagline_Horizontal_Logo_RGB_FullColor_300x300.png?v=1762439423" alt="UpWellness">
+    </div>
     <div class="countdown-header__text">
       <h2 class="countdown-header__title">Sale Ends In:</h2>
     </div>
@@ -969,70 +932,9 @@ button { font-family: var(--font-body); }
       </div>
     </div>
 
-    <!-- RIGHT: Review carousel -->
-    <div class="default-banner__reviews">
-      <div class="default-banner__reviews-track">
-        <!-- Review 1 -->
-        <div class="default-banner__review-card">
-          <img class="default-banner__review-avatar" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/79a128cb-b191-4a74-abbf-5124ec5b453c" alt="Dana S.">
-          <div class="default-banner__review-body">
-            <div class="default-banner__review-stars">
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            </div>
-            <p class="default-banner__review-text">"This drink makes me feel clean from the inside out. Steady energy, skin compliments — it's my morning staple now."</p>
-            <span class="default-banner__review-name">— Dana S.</span>
-          </div>
-        </div>
-        <!-- Review 2 -->
-        <div class="default-banner__review-card">
-          <img class="default-banner__review-avatar" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/2c87173e-6d97-4f39-8457-0504fe55654d" alt="Matt D.">
-          <div class="default-banner__review-body">
-            <div class="default-banner__review-stars">
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            </div>
-            <p class="default-banner__review-text">"The only hydration drink that feels like it's doing something real for my body. Energy climbed, bloating disappeared."</p>
-            <span class="default-banner__review-name">— Matt D.</span>
-          </div>
-        </div>
-        <!-- Review 3 -->
-        <div class="default-banner__review-card">
-          <img class="default-banner__review-avatar" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/529a43f2-737c-4eb8-b82b-5d806a01ceeb" alt="Geraldine D.">
-          <div class="default-banner__review-body">
-            <div class="default-banner__review-stars">
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            </div>
-            <p class="default-banner__review-text">"I'm obsessed... There's no going back. All-day energy, clearer skin, smoother digestion."</p>
-            <span class="default-banner__review-name">— Geraldine D.</span>
-          </div>
-        </div>
-        <!-- Review 4 -->
-        <div class="default-banner__review-card">
-          <img class="default-banner__review-avatar" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/a8f09d09-3b58-4f6f-8e81-9c81e7616ca7" alt="Jennifer F.">
-          <div class="default-banner__review-body">
-            <div class="default-banner__review-stars">
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-              <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.28l-4.77 2.43.91-5.32L2.27 6.62l5.34-.78z"/></svg>
-            </div>
-            <p class="default-banner__review-text">"I feel hydrated for a while after drinking this — not having to drink two gallons to still feel dehydrated."</p>
-            <span class="default-banner__review-name">— Jennifer F.</span>
-          </div>
-        </div>
-      </div>
+    <!-- RIGHT: Product image -->
+    <div class="default-banner__product">
+      <img src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/9a09ad10-6229-43d6-92da-7e6d7e3e2f2f" alt="UpWellness LTV product">
     </div>
   </div>
 </section>
