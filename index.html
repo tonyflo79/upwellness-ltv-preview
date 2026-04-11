@@ -1671,36 +1671,81 @@ button { font-family: var(--font-body); }
 .faq__a { font-size: 15px; color: var(--color-text-secondary); line-height: 1.7; }
 
 /* === PRICING === */
-.pricing { padding: 100px 0; background: var(--color-bg-alt); }
-.pricing__toggle { display: flex; justify-content: center; gap: 0; margin-bottom: 40px; background: #e4ecef; border-radius: var(--radius-button); overflow: hidden; max-width: 320px; margin-left: auto; margin-right: auto; }
-.pricing__toggle-btn { flex: 1; padding: 12px 24px; font-size: 14px; font-weight: 700; border: none; background: transparent; cursor: pointer; font-family: var(--font-heading); min-height: 48px; color: var(--color-text-secondary); transition: var(--transition-card); }
+.pricing { padding: 120px 0 100px; background: var(--color-bg-alt); }
+.pricing__toggle { display: flex; justify-content: center; gap: 0; margin-bottom: 48px; background: #e4ecef; border-radius: var(--radius-button); overflow: hidden; max-width: 340px; margin-left: auto; margin-right: auto; }
+.pricing__toggle-btn { flex: 1; padding: 14px 28px; font-size: 15px; font-weight: 700; border: none; background: transparent; cursor: pointer; font-family: var(--font-heading); min-height: 52px; color: var(--color-text-secondary); transition: var(--transition-card); }
 .pricing__toggle-btn.active { background: var(--gradient-cta); color: #fff; border-radius: var(--radius-button); box-shadow: 0 2px 8px rgba(59,172,193,0.3); }
-.pricing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
-.pricing__card { background: #fff; border-radius: var(--radius-card); padding: 32px 24px; text-align: center; border: 2px solid transparent; position: relative; transition: var(--transition-card); box-shadow: var(--shadow-card); }
+.pricing__grid { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 24px; margin-bottom: 48px; align-items: start; max-width: 1080px; margin-left: auto; margin-right: auto; }
+
+/* Card base */
+.pricing__card { background: #fff; border-radius: 20px; padding: 36px 28px 32px; text-align: center; border: 2px solid rgba(25,145,196,0.08); position: relative; transition: var(--transition-card); box-shadow: var(--shadow-card); }
 .pricing__card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
-.pricing__card--popular { border-color: var(--color-primary); box-shadow: var(--shadow-card), 0 0 0 1px rgba(25,145,196,0.1); }
-.pricing__card--popular::before { content: "BEST VALUE"; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gradient-cta); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; padding: 5px 18px; border-radius: 12px; box-shadow: 0 2px 8px rgba(59,172,193,0.3); }
-@keyframes pulseGlow { 0%, 100% { box-shadow: var(--shadow-card), 0 0 0 0 rgba(59,172,193,0.15); } 50% { box-shadow: var(--shadow-card), 0 0 0 6px rgba(59,172,193,0.08); } }
-.pricing__card--popular { animation: pulseGlow 3s ease-in-out infinite; border-image: linear-gradient(135deg, #3BACC1, #1991C4) 1; border-style: solid; border-width: 2px; border-image-slice: 1; border-radius: var(--radius-card); }
-/* Fix border-image removing radius */
-.pricing__card--popular { border: none; position: relative; }
-.pricing__card--popular::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-card); padding: 2px; background: linear-gradient(135deg, #3BACC1, #1991C4); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
-.pricing__card-img { width: 120px; height: 120px; object-fit: contain; margin: 0 auto 16px; }
-.pricing__card-label { font-family: var(--font-heading); font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-.pricing__card-price { font-family: var(--font-heading); font-size: 36px; font-weight: 800; color: var(--color-text); letter-spacing: -0.02em; }
-.pricing__card-price span { font-size: 15px; font-weight: 400; color: var(--color-text-secondary); }
-.pricing__card-compare { font-size: 13px; color: #999; text-decoration: line-through; }
-.pricing__card-savings { font-size: 13px; font-weight: 700; color: var(--color-primary); margin-top: 4px; }
-.pricing__card-per-day { font-size: 13px; color: var(--color-text-secondary); margin-top: 6px; background: rgba(25,145,196,0.08); display: inline-block; padding: 4px 14px; border-radius: 100px; font-weight: 600; }
-.pricing__card-btn { width: 100%; margin-top: 16px; padding: 14px; font-size: 15px; font-weight: 700; color: #fff; background: var(--gradient-cta); border: none; border-radius: var(--radius-button); cursor: pointer; min-height: 48px; box-shadow: 0 4px 16px rgba(59,172,193,0.25); transition: var(--transition-card); }
-.pricing__card-btn:hover { background: var(--gradient-cta-hover); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(59,172,193,0.35); }
-.pricing__bonuses { max-width: 640px; margin: 0 auto; }
-.pricing__bonus-item { display: flex; gap: 16px; padding: 20px; background: #fff; border-radius: var(--radius-card); margin-bottom: 12px; border-left: none; align-items: center; box-shadow: var(--shadow-card); transition: var(--transition-card); }
+
+/* Popular card — dominant */
+.pricing__card--popular {
+  border: 2px solid var(--color-primary);
+  padding: 44px 32px 36px;
+  box-shadow: 0 8px 40px rgba(25,145,196,0.15), 0 2px 8px rgba(25,145,196,0.08);
+  background: linear-gradient(180deg, rgba(25,145,196,0.03) 0%, #fff 40%);
+  z-index: 1;
+}
+.pricing__card--popular:hover { box-shadow: 0 12px 48px rgba(25,145,196,0.2), 0 4px 12px rgba(25,145,196,0.1); }
+.pricing__card--popular::before {
+  content: "BEST VALUE"; position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--gradient-cta); color: #fff; font-size: 11px; font-weight: 700;
+  letter-spacing: 1.5px; padding: 6px 22px; border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(59,172,193,0.35);
+}
+
+.pricing__card-img { width: 140px; height: 140px; object-fit: contain; margin: 0 auto 20px; }
+.pricing__card--popular .pricing__card-img { width: 160px; height: 160px; }
+.pricing__card-label { font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.pricing__card-price { font-family: var(--font-heading); font-size: 42px; font-weight: 800; color: var(--color-text); letter-spacing: -0.02em; margin-top: 4px; }
+.pricing__card--popular .pricing__card-price { font-size: 48px; }
+.pricing__card-price span { font-size: 16px; font-weight: 400; color: var(--color-text-secondary); }
+.pricing__card-compare { font-size: 14px; color: #aaa; text-decoration: line-through; margin-top: 2px; }
+.pricing__card-savings { font-size: 14px; font-weight: 700; color: #fff; margin-top: 8px; background: var(--gradient-cta); display: inline-block; padding: 4px 16px; border-radius: 100px; }
+.pricing__card-per-day { font-size: 14px; color: var(--color-text-secondary); margin-top: 10px; font-weight: 600; }
+
+/* Checklist inside card */
+.pricing__checklist { list-style: none; text-align: left; margin: 20px 0; padding: 0; }
+.pricing__checklist li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--color-text); line-height: 1.5;
+  padding: 7px 0; border-bottom: 1px solid rgba(25,145,196,0.06);
+}
+.pricing__checklist li:last-child { border-bottom: none; }
+.pricing__check-icon { color: var(--color-primary); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.pricing__checklist .pricing__check-value { margin-left: auto; font-weight: 600; color: var(--color-text-secondary); white-space: nowrap; }
+
+/* ATC button */
+.pricing__card-btn {
+  width: 100%; margin-top: 20px; padding: 18px 24px; font-size: 17px; font-weight: 800;
+  color: #fff; background: var(--gradient-cta); border: none; border-radius: var(--radius-button);
+  cursor: pointer; min-height: 56px; text-transform: uppercase; letter-spacing: 1px;
+  box-shadow: 0 4px 20px rgba(59,172,193,0.3); transition: var(--transition-card);
+}
+.pricing__card-btn:hover { background: var(--gradient-cta-hover); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,172,193,0.4); }
+.pricing__card-btn .btn-arrow { display: inline-block; transition: transform 0.3s; margin-left: 6px; }
+.pricing__card-btn:hover .btn-arrow { transform: translateX(4px); }
+
+/* Trust badges under ATC */
+.pricing__trust {
+  display: flex; justify-content: center; gap: 16px; margin-top: 14px;
+  font-size: 11px; color: var(--color-text-secondary); font-weight: 600;
+}
+.pricing__trust span { display: flex; align-items: center; gap: 4px; }
+.pricing__trust svg { width: 14px; height: 14px; }
+
+/* Bonus stack below cards */
+.pricing__bonuses { max-width: 720px; margin: 0 auto; }
+.pricing__bonuses-title { font-family: var(--font-heading); font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 24px; }
+.pricing__bonus-item { display: flex; gap: 16px; padding: 22px 24px; background: #fff; border-radius: var(--radius-card); margin-bottom: 12px; align-items: center; box-shadow: var(--shadow-card); transition: var(--transition-card); }
 .pricing__bonus-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
 .pricing__bonus-number { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: var(--gradient-cta); }
 .pricing__bonus-title { font-size: 15px; font-weight: 700; }
-.pricing__bonus-value { font-size: 13px; color: var(--color-text-secondary); }
-.pricing__bonus-desc { font-size: 14px; color: var(--color-text-secondary); margin-top: 2px; }
+.pricing__bonus-value { font-size: 13px; color: var(--color-primary); font-weight: 600; }
+.pricing__bonus-desc { font-size: 14px; color: var(--color-text-secondary); margin-top: 2px; line-height: 1.6; }
 
 /* === GUARANTEE === */
 .guarantee { padding: 100px 0; background: radial-gradient(ellipse at 50% 30%, rgba(25,145,196,0.04) 0%, var(--color-bg) 60%); }
@@ -2890,92 +2935,135 @@ button { font-family: var(--font-body); }
 
     <!-- Subscribe Grid -->
     <div class="pricing__grid" id="pricing-subscribe">
+
+      <!-- 1 Month -->
       <div class="pricing__card anim-child">
         <img class="pricing__card-img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/73ea1d02-ad87-4103-b2c7-2f7fe62cd2c8" alt="1 Month Supply">
-        <p class="pricing__card-label">1 Month</p>
-        <p class="pricing__card-price">$44.95</p>
+        <p class="pricing__card-label">1 Month Supply</p>
         <p class="pricing__card-compare">$69.95</p>
+        <p class="pricing__card-price">$44.95</p>
         <p class="pricing__card-savings">Save 36%</p>
         <p class="pricing__card-per-day">$1.50/day</p>
-        <button class="pricing__card-btn">Add to Cart</button>
+        <ul class="pricing__checklist">
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 30 stick packs delivered monthly</li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Fourth Phase Protocol <span class="pricing__check-value">$97</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Hydration Truth Report <span class="pricing__check-value">$47</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free USA shipping</li>
+        </ul>
+        <button class="pricing__card-btn">ADD TO CART <span class="btn-arrow">&rarr;</span></button>
+        <div class="pricing__trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 60-Day Guarantee</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Cancel Anytime</span>
+        </div>
       </div>
 
+      <!-- 3 Months — BEST VALUE -->
       <div class="pricing__card pricing__card--popular anim-child">
         <img class="pricing__card-img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/aa5298cf-e6ed-4aa3-89db-eaf78ea0b664" alt="3 Month Supply">
-        <p class="pricing__card-label">3 Months</p>
-        <p class="pricing__card-price">$34.95<span>/each</span></p>
+        <p class="pricing__card-label">3 Month Supply</p>
         <p class="pricing__card-compare">$69.95</p>
+        <p class="pricing__card-price">$34.95<span>/each</span></p>
         <p class="pricing__card-savings">Save 50%</p>
         <p class="pricing__card-per-day">$1.17/day</p>
-        <button class="pricing__card-btn">Add to Cart</button>
+        <ul class="pricing__checklist">
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 3 months supply (90 packs) <span class="pricing__check-value">$104.85</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Fourth Phase Protocol <span class="pricing__check-value">$97</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Hydration Truth Report <span class="pricing__check-value">$47</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free USA shipping</li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Priority support</li>
+        </ul>
+        <button class="pricing__card-btn">ADD TO CART <span class="btn-arrow">&rarr;</span></button>
+        <div class="pricing__trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 60-Day Guarantee</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Cancel Anytime</span>
+        </div>
       </div>
 
+      <!-- 6 Months -->
       <div class="pricing__card anim-child">
         <img class="pricing__card-img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/7a8b3d67-948f-4134-9a97-2b531e211684" alt="6 Month Supply">
-        <p class="pricing__card-label">6 Months</p>
-        <p class="pricing__card-price">$24.95<span>/each</span></p>
+        <p class="pricing__card-label">6 Month Supply</p>
         <p class="pricing__card-compare">$69.95</p>
+        <p class="pricing__card-price">$24.95<span>/each</span></p>
         <p class="pricing__card-savings">Save 64%</p>
         <p class="pricing__card-per-day">$0.83/day</p>
-        <button class="pricing__card-btn">Add to Cart</button>
+        <ul class="pricing__checklist">
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 6 months supply (180 packs) <span class="pricing__check-value">$149.70</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Fourth Phase Protocol <span class="pricing__check-value">$97</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Hydration Truth Report <span class="pricing__check-value">$47</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free USA shipping</li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Biggest savings per pack</li>
+        </ul>
+        <button class="pricing__card-btn">ADD TO CART <span class="btn-arrow">&rarr;</span></button>
+        <div class="pricing__trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 60-Day Guarantee</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Cancel Anytime</span>
+        </div>
       </div>
+
     </div>
 
     <!-- One-Time Grid (hidden by default) -->
     <div class="pricing__grid" id="pricing-onetime" style="display:none;">
+
       <div class="pricing__card">
         <img class="pricing__card-img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/7650e790-c0e1-488b-bab3-60a9276992d9" alt="1 Month Supply">
-        <p class="pricing__card-label">1 Month</p>
-        <p class="pricing__card-price">$49.95</p>
+        <p class="pricing__card-label">1 Month Supply</p>
         <p class="pricing__card-compare">$69.95</p>
+        <p class="pricing__card-price">$49.95</p>
         <p class="pricing__card-savings">Save 29%</p>
         <p class="pricing__card-per-day">$1.67/day</p>
-        <button class="pricing__card-btn">Add to Cart</button>
+        <ul class="pricing__checklist">
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 30 stick packs &mdash; one-time purchase</li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Fourth Phase Protocol <span class="pricing__check-value">$97</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Hydration Truth Report <span class="pricing__check-value">$47</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free USA shipping</li>
+        </ul>
+        <button class="pricing__card-btn">ADD TO CART <span class="btn-arrow">&rarr;</span></button>
+        <div class="pricing__trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 60-Day Guarantee</span>
+        </div>
       </div>
 
       <div class="pricing__card pricing__card--popular">
         <img class="pricing__card-img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/60e0caea-35f6-471b-a8dd-427c6ee55d37" alt="3 Month Supply">
-        <p class="pricing__card-label">3 Months</p>
-        <p class="pricing__card-price">$39.95<span>/each</span></p>
+        <p class="pricing__card-label">3 Month Supply</p>
         <p class="pricing__card-compare">$69.95</p>
+        <p class="pricing__card-price">$39.95<span>/each</span></p>
         <p class="pricing__card-savings">Save 43%</p>
         <p class="pricing__card-per-day">$1.33/day</p>
-        <button class="pricing__card-btn">Add to Cart</button>
+        <ul class="pricing__checklist">
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 3 months supply (90 packs) <span class="pricing__check-value">$119.85</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Fourth Phase Protocol <span class="pricing__check-value">$97</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Hydration Truth Report <span class="pricing__check-value">$47</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free USA shipping</li>
+        </ul>
+        <button class="pricing__card-btn">ADD TO CART <span class="btn-arrow">&rarr;</span></button>
+        <div class="pricing__trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 60-Day Guarantee</span>
+        </div>
       </div>
 
       <div class="pricing__card">
         <img class="pricing__card-img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/66509c20-eb4e-42c9-86d3-0f8eff0dd3dd" alt="6 Month Supply">
-        <p class="pricing__card-label">6 Months</p>
-        <p class="pricing__card-price">$29.95<span>/each</span></p>
+        <p class="pricing__card-label">6 Month Supply</p>
         <p class="pricing__card-compare">$69.95</p>
+        <p class="pricing__card-price">$29.95<span>/each</span></p>
         <p class="pricing__card-savings">Save 57%</p>
         <p class="pricing__card-per-day">$1.00/day</p>
-        <button class="pricing__card-btn">Add to Cart</button>
+        <ul class="pricing__checklist">
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 6 months supply (180 packs) <span class="pricing__check-value">$179.70</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Fourth Phase Protocol <span class="pricing__check-value">$97</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free Hydration Truth Report <span class="pricing__check-value">$47</span></li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Free USA shipping</li>
+          <li><span class="pricing__check-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6 11.6 2.7 8.3" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Biggest savings per pack</li>
+        </ul>
+        <button class="pricing__card-btn">ADD TO CART <span class="btn-arrow">&rarr;</span></button>
+        <div class="pricing__trust">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 60-Day Guarantee</span>
+        </div>
       </div>
-    </div>
 
-    <!-- Bonus Stack -->
-    <h3 style="font-family:var(--font-heading); font-size:24px; text-align:center; margin: 48px 0 24px;">Included With Every Order</h3>
-    <div class="pricing__bonuses">
-      <div class="pricing__bonus-item anim-child">
-        <span class="pricing__bonus-number">#1</span>
-        <div>
-          <p class="pricing__bonus-title">The Fourth Phase Protocol <span class="pricing__bonus-value">($97 value)</span></p>
-          <p class="pricing__bonus-desc">Phase-by-phase optimization guide. Maximize your hydration results with the complete protocol Dr. Levitt uses with his own patients.</p>
-        </div>
-      </div>
-      <div class="pricing__bonus-item anim-child">
-        <span class="pricing__bonus-number">#2</span>
-        <div>
-          <p class="pricing__bonus-title">The Hydration Truth Report <span class="pricing__bonus-value">($47 value)</span></p>
-          <p class="pricing__bonus-desc">The clinical evidence file. 34 studies. The research behind taurine, the liver-hydration connection, and why every other approach is incomplete.</p>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:24px; padding:16px; background:var(--color-cta-secondary); border-radius:var(--radius-card); max-width:400px; margin-left:auto; margin-right:auto;">
-      <span style="font-size:14px; color:var(--color-text-secondary);">Total Bonus Value: </span>
-      <span style="font-family:var(--font-heading); font-size:28px; font-weight:700; color:var(--color-text);">$144</span>
-      <span style="font-size:14px; color:var(--color-text-secondary);"> &mdash; Yours Free</span>
     </div>
 
   </div>
