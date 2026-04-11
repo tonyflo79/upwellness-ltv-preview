@@ -1236,21 +1236,75 @@ button { font-family: var(--font-body); }
 .expert__narrative strong { color: var(--color-text); font-weight: 700; }
 
 /* === INGREDIENTS === */
-.ingredients { padding: 100px 0; background: var(--color-bg-alt); }
-.ingredients__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 48px; }
-.ingredient-card { background: #fff; border-radius: var(--radius-card); padding: 24px; display: flex; gap: 16px; align-items: flex-start; box-shadow: var(--shadow-card); transition: var(--transition-card); border-left: 3px solid transparent; }
-.ingredient-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); border-left-color: var(--color-accent); }
-.ingredient-card--hero { grid-column: 1 / -1; border: none; background: linear-gradient(135deg, rgba(25,145,196,0.08), rgba(59,172,193,0.04)); border-left: 4px solid var(--color-primary); border-radius: 20px; }
-.ingredient-card--hero:hover { border-left-color: var(--color-primary); }
-.ingredient-card__img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; background: var(--color-bg-alt); border: 2px solid rgba(25,145,196,0.2); }
-.ingredient-card__body {}
-.ingredient-card__name { font-family: var(--font-heading); font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-.ingredient-card__xfy { font-size: 13px; font-weight: 600; color: var(--color-primary); margin-bottom: 6px; }
-.ingredient-card__desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
-.ingredient-card__dose { font-size: 12px; font-weight: 600; color: var(--color-primary); margin-top: 4px; }
+.ingredients { padding: 120px 0 100px; background: var(--color-bg-alt); }
+.ingredients__bridge {
+  max-width: 780px; margin: 0 auto 64px; text-align: center;
+  font-size: 18px; color: var(--color-text-secondary); line-height: 1.8;
+}
+.ingredients__bridge strong { color: var(--color-text); font-weight: 700; }
+
+/* System group */
+.ing-group { margin-bottom: 56px; }
+.ing-group:last-of-type { margin-bottom: 48px; }
+.ing-group__header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 28px; padding-bottom: 14px;
+  border-bottom: 2px solid rgba(25,145,196,0.15);
+}
+.ing-group__icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, rgba(25,145,196,0.12), rgba(59,172,193,0.06));
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.ing-group__icon svg { width: 22px; height: 22px; }
+.ing-group__label { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--color-primary); text-transform: uppercase; letter-spacing: 1.2px; }
+.ing-group__role { font-size: 14px; color: var(--color-text-secondary); margin-left: auto; font-style: italic; }
+
+/* Ingredient cards — big visual treatment */
+.ing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.ing-grid--duo { grid-template-columns: repeat(2, 1fr); max-width: 820px; margin: 0 auto; }
+.ing-grid--solo { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+
+.ing-card {
+  background: #fff; border-radius: 20px; padding: 32px 28px 28px; text-align: center;
+  box-shadow: var(--shadow-card); transition: var(--transition-card);
+  border: 1.5px solid rgba(25,145,196,0.08);
+  display: flex; flex-direction: column; align-items: center;
+}
+.ing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); border-color: rgba(25,145,196,0.2); }
+
+/* Hero card (Taurine) — full width, horizontal layout */
+.ing-card--hero {
+  flex-direction: row; text-align: left; align-items: flex-start;
+  padding: 40px 44px; gap: 36px;
+  background: linear-gradient(135deg, rgba(25,145,196,0.06), rgba(59,172,193,0.02));
+  border: 2px solid rgba(25,145,196,0.15);
+  border-radius: 24px;
+}
+.ing-card--hero .ing-card__img { width: 160px; height: 160px; flex-shrink: 0; }
+.ing-card--hero .ing-card__name { font-size: 22px; }
+.ing-card--hero .ing-card__desc { font-size: 16px; line-height: 1.75; }
+
+.ing-card__img {
+  width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
+  background: var(--color-bg-alt); margin-bottom: 20px;
+  border: 3px solid rgba(25,145,196,0.15);
+  box-shadow: 0 4px 16px rgba(25,145,196,0.1);
+}
+.ing-card--hero .ing-card__img { margin-bottom: 0; }
+.ing-card__name { font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 6px; color: var(--color-text); }
+.ing-card__xfy { font-size: 13px; font-weight: 600; color: var(--color-primary); margin-bottom: 10px; letter-spacing: 0.3px; }
+.ing-card__desc { font-size: 15px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 12px; }
+.ing-card__stat {
+  font-size: 13px; font-weight: 700; color: var(--color-primary);
+  padding: 6px 16px; border-radius: 20px;
+  background: rgba(25,145,196,0.08);
+  display: inline-block; margin-top: auto;
+}
 
 /* No List */
-.no-list { padding: 40px 0; background: var(--color-bg-alt); }
+.no-list { padding: 48px 0 0; }
+.no-list__title { font-family: var(--font-heading); font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 20px; }
 .no-list__badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .no-list__badge { padding: 10px 20px; font-size: 13px; font-weight: 600; border: 1.5px solid #dde4e8; border-radius: 24px; background: #fff; color: var(--color-text); transition: var(--transition-card); }
 .no-list__badge:hover { border-color: var(--color-primary); background: rgba(25,145,196,0.04); }
@@ -1701,7 +1755,11 @@ button { font-family: var(--font-body); }
   .timeline__name { font-size: 19px; }
   .timeline__product-overlay { display: none; }
   .timeline__cta { font-size: 16px; padding: 20px 40px; }
-  .ingredients__grid { grid-template-columns: 1fr; }
+  .ing-grid { grid-template-columns: 1fr 1fr; }
+  .ing-grid--duo { grid-template-columns: 1fr 1fr; }
+  .ing-card--hero { flex-direction: column; text-align: center; align-items: center; padding: 32px 28px; gap: 20px; }
+  .ing-card--hero .ing-card__img { margin-bottom: 0; }
+  .ing-group__role { display: none; }
   .howto__steps { grid-template-columns: 1fr 1fr; }
   .reviews__grid { grid-template-columns: 1fr; }
   .comparison { overflow-x: auto; }
@@ -1738,6 +1796,11 @@ button { font-family: var(--font-body); }
   .story-block__heading { font-size: 22px; }
   .mechanism-section__heading { font-size: 28px; }
   .fourphase { max-width: 300px; }
+  .ing-grid, .ing-grid--duo { grid-template-columns: 1fr; }
+  .ing-card { padding: 24px 20px; }
+  .ing-card__img { width: 100px; height: 100px; }
+  .ing-card--hero .ing-card__img { width: 120px; height: 120px; }
+  .ingredients__bridge { font-size: 16px; }
 }
 </style>
 </head>
@@ -2316,104 +2379,146 @@ button { font-family: var(--font-body); }
 <section class="ingredients anim-section" id="ingredients">
   <div class="container">
     <p class="section-label">What's Inside</p>
-    <h2 class="section-title">8 Ingredients. Zero Filler.</h2>
-    <p class="section-sub">Every ingredient has a job. Every dose is intentional.</p>
+    <h2 class="section-title">8 Ingredients. One System.</h2>
+    <p class="section-sub">Every ingredient has a job. Every dose is intentional. Zero filler.</p>
 
-    <div class="ingredients__grid">
+    <!-- System bridge — Dr. Josh's "harmony" concept -->
+    <div class="ingredients__bridge">
+      <p>Most hydration products dump electrolytes into your body and hope for the best. LTV works differently &mdash; <strong>four parts working in harmony</strong>, like instruments in a quartet.</p>
+      <p style="margin-top:12px;"><strong>Taurine</strong> drives water into your cells and supports bile production. <strong>Three liver botanicals</strong> keep bile flowing and your liver processing efficiently. <strong>Electrolytes</strong> maintain fluid balance outside the cells. <strong>Vitamin C</strong> shields the whole system from oxidative stress.</p>
+      <p style="margin-top:12px;">Not random ingredients. A coordinated system.</p>
+    </div>
 
-      <!-- HERO: Taurine -->
-      <div class="ingredient-card ingredient-card--hero anim-child">
-        <img class="ingredient-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/0edec46f-2758-4d0c-adbe-7cb586d368e5" alt="Taurine">
-        <div class="ingredient-card__body">
-          <p class="ingredient-card__xfy">Taurine for Cellular Hydration</p>
-          <p class="ingredient-card__name">Taurine &mdash; The Hero Ingredient</p>
-          <p class="ingredient-card__desc">The osmolyte that controls whether water stays inside your cells or passes right through. Classified as a critical cellular compound by Columbia University researchers (Science, 2023). Your liver produces it naturally &mdash; but production drops when the liver is overwhelmed. LTV delivers a clinically meaningful dose directly, bypassing the bottleneck.</p>
-          <p class="ingredient-card__dose">1,000mg per serving &mdash; supported by 34 RCTs</p>
+    <!-- GROUP 1: The Hero — Taurine -->
+    <div class="ing-group anim-child">
+      <div class="ing-group__header">
+        <div class="ing-group__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
         </div>
+        <span class="ing-group__label">The Hero</span>
+        <span class="ing-group__role">Cellular hydration + bile production</span>
       </div>
 
-      <!-- Sodium -->
-      <div class="ingredient-card anim-child">
-        <img class="ingredient-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/3ccdf6ce-1aca-4c24-b0ea-195a6f268324" alt="Sodium">
-        <div class="ingredient-card__body">
-          <p class="ingredient-card__xfy">Pacific Sea Salt for Natural Electrolytes</p>
-          <p class="ingredient-card__name">Sodium (Pacific Sea Salt)</p>
-          <p class="ingredient-card__desc">Essential electrolyte for fluid balance. Sourced from Pacific sea salt &mdash; a clean mineral source that delivers Phase 2 hydration without processed additives.</p>
+      <div class="ing-grid ing-grid--solo">
+        <div class="ing-card ing-card--hero">
+          <img class="ing-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/0edec46f-2758-4d0c-adbe-7cb586d368e5" alt="Taurine">
+          <div>
+            <p class="ing-card__xfy">Taurine for Cellular Hydration</p>
+            <p class="ing-card__name">Taurine</p>
+            <p class="ing-card__desc">The osmolyte that controls whether water stays inside your cells or passes right through. Classified as a critical cellular compound by Columbia University researchers (<em>Science</em>, 2023). Your liver produces it naturally &mdash; but production drops when the liver is overwhelmed. Taurine also supports bile production and quality, helping your body clear what it doesn't need.</p>
+            <p class="ing-card__stat">1,000mg per serving &bull; 34 clinical trials</p>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- Potassium -->
-      <div class="ingredient-card anim-child">
-        <img class="ingredient-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/6878a04f-da37-4871-8ce7-c394690df115" alt="Potassium">
-        <div class="ingredient-card__body">
-          <p class="ingredient-card__xfy">Potassium for Fluid Balance</p>
-          <p class="ingredient-card__name">Potassium</p>
-          <p class="ingredient-card__desc">Works with sodium to maintain fluid balance and support cardiovascular health. A critical electrolyte most adults don't get enough of.</p>
+    <!-- GROUP 2: The Liver Team — Botanicals -->
+    <div class="ing-group anim-child">
+      <div class="ing-group__header">
+        <div class="ing-group__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c-4-3-8-7.5-8-12a8 8 0 0 1 16 0c0 4.5-4 9-8 12z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
+        <span class="ing-group__label">The Liver Team</span>
+        <span class="ing-group__role">Liver support + bile flow</span>
       </div>
 
-      <!-- Magnesium -->
-      <div class="ingredient-card anim-child">
-        <img class="ingredient-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/58cbd9eb-d7ae-4e4d-911f-34c3538e6c7d" alt="Magnesium">
-        <div class="ingredient-card__body">
-          <p class="ingredient-card__xfy">Aquamin Magnesium for Deep Mineral Balance</p>
-          <p class="ingredient-card__name">Magnesium (Aquamin MgAG)</p>
-          <p class="ingredient-card__desc">Patented marine-sourced magnesium that supports 300+ enzymatic reactions, including energy production and liver enzyme function. Not the cheap oxide form found in mass-market supplements.</p>
+      <div class="ing-grid">
+        <div class="ing-card">
+          <img class="ing-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/01bd195f-8eb7-40f0-97cc-1265bc0bf188" alt="Milk Thistle">
+          <p class="ing-card__xfy">Milk Thistle for Liver Protection</p>
+          <p class="ing-card__name">Milk Thistle</p>
+          <p class="ing-card__desc">2,000+ years of documented use. The active compound silymarin protects liver cells and supports the organ's ability to produce taurine and healthy bile.</p>
+          <p class="ing-card__stat">Strong clinical evidence base</p>
+        </div>
+
+        <div class="ing-card">
+          <img class="ing-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/c8bb0966-7ac4-4ff1-b545-5bde6b916ade" alt="Dandelion Root">
+          <p class="ing-card__xfy">Dandelion Root for Bile Flow</p>
+          <p class="ing-card__name">Dandelion Root</p>
+          <p class="ing-card__desc">Supports digestion, inflammation response, and bile flow. When bile moves freely, your body clears waste more efficiently &mdash; and your liver stays lighter.</p>
+          <p class="ing-card__stat">Traditional botanical, modern research</p>
+        </div>
+
+        <div class="ing-card">
+          <img class="ing-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/ef52bca3-b371-47fd-83a4-588503f77e3e" alt="Schisandra Berry">
+          <p class="ing-card__xfy">Schisandra Berry for Detox Defense</p>
+          <p class="ing-card__name">Schisandra Berry</p>
+          <p class="ing-card__desc">Adaptogenic berry that supports liver detoxification pathways and stress resilience. Helps your liver handle the 80,000+ environmental chemicals it encounters daily.</p>
+          <p class="ing-card__stat">Adaptogenic &bull; Liver-protective</p>
         </div>
       </div>
+    </div>
 
-      <!-- Milk Thistle -->
-      <div class="ingredient-card anim-child">
-        <img class="ingredient-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/01bd195f-8eb7-40f0-97cc-1265bc0bf188" alt="Milk Thistle">
-        <div class="ingredient-card__body">
-          <p class="ingredient-card__xfy">Milk Thistle for Liver Protection</p>
-          <p class="ingredient-card__name">Milk Thistle</p>
-          <p class="ingredient-card__desc">2,000+ years of documented use. The active compound silymarin protects liver cells and supports the organ's ability to produce taurine. Strong evidence base.</p>
+    <!-- GROUP 3: The Mineral Foundation — Electrolytes -->
+    <div class="ing-group anim-child">
+      <div class="ing-group__header">
+        <div class="ing-group__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
+        <span class="ing-group__label">The Mineral Foundation</span>
+        <span class="ing-group__role">Electrolyte balance</span>
       </div>
 
-      <!-- Dandelion Root -->
-      <div class="ingredient-card anim-child">
-        <img class="ingredient-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/c8bb0966-7ac4-4ff1-b545-5bde6b916ade" alt="Dandelion Root">
-        <div class="ingredient-card__body">
-          <p class="ingredient-card__xfy">Dandelion Root for Digestive Support</p>
-          <p class="ingredient-card__name">Dandelion Root</p>
-          <p class="ingredient-card__desc">Laboratory research shows support for digestion, inflammation response, and liver health. A traditional botanical with modern scientific interest.</p>
+      <div class="ing-grid">
+        <div class="ing-card">
+          <img class="ing-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/3ccdf6ce-1aca-4c24-b0ea-195a6f268324" alt="Sodium">
+          <p class="ing-card__xfy">Pacific Sea Salt for Natural Electrolytes</p>
+          <p class="ing-card__name">Sodium (Pacific Sea Salt)</p>
+          <p class="ing-card__desc">Essential electrolyte for fluid balance. Sourced from Pacific sea salt &mdash; a clean mineral source that delivers Phase 2 hydration without processed additives.</p>
+          <p class="ing-card__stat">Clean-sourced &bull; No additives</p>
+        </div>
+
+        <div class="ing-card">
+          <img class="ing-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/6878a04f-da37-4871-8ce7-c394690df115" alt="Potassium">
+          <p class="ing-card__xfy">Potassium for Fluid Balance</p>
+          <p class="ing-card__name">Potassium</p>
+          <p class="ing-card__desc">Works with sodium to maintain fluid balance and support cardiovascular health. A critical electrolyte most adults don't get enough of.</p>
+          <p class="ing-card__stat">Sodium's essential partner</p>
+        </div>
+
+        <div class="ing-card">
+          <img class="ing-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/58cbd9eb-d7ae-4e4d-911f-34c3538e6c7d" alt="Magnesium">
+          <p class="ing-card__xfy">Aquamin Magnesium for Deep Mineral Balance</p>
+          <p class="ing-card__name">Magnesium (Aquamin MgAG)</p>
+          <p class="ing-card__desc">Patented marine-sourced magnesium that supports 300+ enzymatic reactions, including energy production and liver enzyme function. Not the cheap oxide form.</p>
+          <p class="ing-card__stat">Patented &bull; Marine-sourced</p>
         </div>
       </div>
+    </div>
 
-      <!-- Schisandra Berry -->
-      <div class="ingredient-card anim-child">
-        <img class="ingredient-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/ef52bca3-b371-47fd-83a4-588503f77e3e" alt="Schisandra Berry">
-        <div class="ingredient-card__body">
-          <p class="ingredient-card__xfy">Schisandra Berry for Detox Defense</p>
-          <p class="ingredient-card__name">Schisandra Berry</p>
-          <p class="ingredient-card__desc">Adaptogenic berry that laboratory research shows supports liver detoxification pathways and stress resilience. Helps your liver process the 80,000+ environmental chemicals it encounters daily.</p>
+    <!-- GROUP 4: The Shield — Vitamin C -->
+    <div class="ing-group anim-child">
+      <div class="ing-group__header">
+        <div class="ing-group__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
+        <span class="ing-group__label">The Shield</span>
+        <span class="ing-group__role">Antioxidant defense</span>
       </div>
 
-      <!-- Vitamin C -->
-      <div class="ingredient-card anim-child">
-        <img class="ingredient-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/70b5c7a1-3f1a-47b4-85b1-928395ea76d5" alt="Vitamin C">
-        <div class="ingredient-card__body">
-          <p class="ingredient-card__xfy">Vitamin C for Antioxidant Defense</p>
-          <p class="ingredient-card__name">Vitamin C</p>
-          <p class="ingredient-card__desc">Antioxidant that supports immune function and liver health. Works synergistically with the botanical blend to protect cells from oxidative stress.</p>
+      <div class="ing-grid ing-grid--solo">
+        <div class="ing-card">
+          <img class="ing-card__img" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/70b5c7a1-3f1a-47b4-85b1-928395ea76d5" alt="Vitamin C">
+          <p class="ing-card__xfy">Vitamin C for Antioxidant Defense</p>
+          <p class="ing-card__name">Vitamin C</p>
+          <p class="ing-card__desc">Protects cells from oxidative stress while supporting immune function and liver health. Works synergistically with the botanical blend to shield the whole system.</p>
+          <p class="ing-card__stat">Synergistic with botanicals</p>
         </div>
       </div>
-
     </div>
 
     <!-- The No List -->
-    <h3 style="font-family:var(--font-heading); font-size:22px; text-align:center; margin-bottom:20px;">The No List</h3>
-    <div class="no-list__badges">
-      <span class="no-list__badge">Zero Sugar</span>
-      <span class="no-list__badge">No Artificial Sweeteners</span>
-      <span class="no-list__badge">No Maltodextrin</span>
-      <span class="no-list__badge">No Food Dyes</span>
-      <span class="no-list__badge">No Soy</span>
-      <span class="no-list__badge">No Gluten</span>
-      <span class="no-list__badge">Non-GMO</span>
+    <div class="no-list">
+      <h3 class="no-list__title">The No List</h3>
+      <div class="no-list__badges">
+        <span class="no-list__badge">Zero Sugar</span>
+        <span class="no-list__badge">No Artificial Sweeteners</span>
+        <span class="no-list__badge">No Maltodextrin</span>
+        <span class="no-list__badge">No Food Dyes</span>
+        <span class="no-list__badge">No Soy</span>
+        <span class="no-list__badge">No Gluten</span>
+        <span class="no-list__badge">Non-GMO</span>
+      </div>
     </div>
 
   </div>
