@@ -1821,11 +1821,57 @@ button { font-family: var(--font-body); }
 .guarantee__body { font-size: 16px; color: var(--color-text-secondary); line-height: 1.85; }
 
 /* === CTA BANNER === */
-.cta-banner { padding: 80px 0; background: linear-gradient(135deg, #023047 0%, #0d6e94 50%, #1991C4 100%); text-align: center; }
-.cta-banner__title { font-family: var(--font-heading); font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.02em; }
-.cta-banner__sub { font-size: 17px; color: rgba(255,255,255,0.75); margin-bottom: 32px; }
-.cta-banner__btn { display: inline-block; padding: 18px 48px; font-size: 17px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #023047; background: #fff; border: none; border-radius: var(--radius-button); cursor: pointer; transition: var(--transition-card); box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
-.cta-banner__btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+.cta-banner {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #023047 0%, #0d6e94 40%, #1991C4 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 120%, rgba(59,172,193,0.25) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cta-banner__inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+.cta-banner__product {
+  width: 180px; height: 180px; object-fit: contain;
+  margin: 0 auto 32px;
+  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.3));
+}
+.cta-banner__label {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px; font-style: italic;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 12px; letter-spacing: 0.5px;
+}
+.cta-banner__title {
+  font-family: var(--font-heading); font-size: 44px; font-weight: 800;
+  color: #fff; margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.15;
+}
+.cta-banner__title em { font-style: normal; color: #7DD8E8; }
+.cta-banner__sub {
+  font-size: 18px; color: rgba(255,255,255,0.8);
+  margin-bottom: 40px; line-height: 1.7; max-width: 580px; margin-left: auto; margin-right: auto;
+}
+.cta-banner__btn {
+  display: inline-block; padding: 22px 64px; font-size: 19px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 1.2px;
+  color: #023047; background: #fff; border: none;
+  border-radius: var(--radius-button); cursor: pointer;
+  transition: var(--transition-card);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2), 0 0 60px rgba(255,255,255,0.1);
+}
+.cta-banner__btn:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 80px rgba(255,255,255,0.15); }
+.cta-banner__btn .btn-arrow { display: inline-block; transition: transform 0.3s; margin-left: 8px; }
+.cta-banner__btn:hover .btn-arrow { transform: translateX(5px); }
+.cta-banner__trust-row {
+  display: flex; justify-content: center; gap: 28px; margin-top: 24px;
+  font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 600;
+}
+.cta-banner__trust-row span { display: flex; align-items: center; gap: 6px; }
+.cta-banner__trust-row svg { width: 16px; height: 16px; }
 
 /* === FOOTER === */
 .footer { padding: 48px 0; background: #f0f2f3; }
@@ -1877,8 +1923,11 @@ button { font-family: var(--font-body); }
   .comparison table { min-width: 600px; }
   .pricing__grid { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
   .expert, .ingredients, .timeline, .comparison, .howto, .reviews, .faq, .pricing, .guarantee { padding: 64px 0; }
-  .cta-banner { padding: 56px 0; }
-  .cta-banner__title { font-size: 28px; }
+  .cta-banner { padding: 72px 0; }
+  .cta-banner__title { font-size: 30px; }
+  .cta-banner__product { width: 140px; height: 140px; margin-bottom: 24px; }
+  .cta-banner__btn { padding: 20px 40px; font-size: 16px; }
+  .cta-banner__trust-row { flex-direction: column; gap: 12px; align-items: center; }
 
   /* Story section mobile */
   .story-section { padding: 72px 0 60px; }
@@ -2848,9 +2897,9 @@ button { font-family: var(--font-body); }
           <tr>
             <th>Feature</th>
             <th>LTV</th>
-            <th>LMNT</th>
-            <th>Liquid IV</th>
-            <th>DripDrop</th>
+            <th>Electrolyte Powders</th>
+            <th>Sugar-Based Mixes</th>
+            <th>Clinical ORS</th>
           </tr>
         </thead>
         <tbody>
@@ -2886,7 +2935,7 @@ button { font-family: var(--font-body); }
             <td>Sugar</td>
             <td><span class="check">0g</span></td>
             <td><span class="check">0g</span></td>
-            <td><span class="cross">11g</span></td>
+            <td><span class="cross">6&ndash;11g</span></td>
             <td><span class="cross">6g</span></td>
           </tr>
           <tr>
@@ -3276,9 +3325,18 @@ button { font-family: var(--font-body); }
 <!-- ============================================================ -->
 <section class="cta-banner">
   <div class="container">
-    <p class="cta-banner__title">Ready for Phase 4?</p>
-    <p class="cta-banner__sub">Join thousands who stopped guessing and started hydrating at the cellular level.</p>
-    <button class="cta-banner__btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Start Fourth Phase Hydration</button>
+    <div class="cta-banner__inner">
+      <img class="cta-banner__product" src="https://assets.replocdn.com/projects/44e10e65-6b65-4f4e-ae96-b56b6a8117ca/9a09ad10-6229-43d6-92da-7e6d7e3e2f2f" alt="LTV Stick Pack">
+      <p class="cta-banner__label">Daily cellular hydration support</p>
+      <p class="cta-banner__title">Ready for <em>Phase 4?</em></p>
+      <p class="cta-banner__sub">Join thousands who stopped guessing and started hydrating at the cellular level. One packet. One glass. Every morning.</p>
+      <button class="cta-banner__btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">START FOURTH PHASE HYDRATION <span class="btn-arrow">&rarr;</span></button>
+      <div class="cta-banner__trust-row">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 60-Day Guarantee</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Free Shipping</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Doctor Formulated</span>
+      </div>
+    </div>
   </div>
 </section>
 
