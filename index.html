@@ -1309,6 +1309,72 @@ button { font-family: var(--font-body); }
 .no-list__badge { padding: 10px 20px; font-size: 13px; font-weight: 600; border: 1.5px solid #dde4e8; border-radius: 24px; background: #fff; color: var(--color-text); transition: var(--transition-card); }
 .no-list__badge:hover { border-color: var(--color-primary); background: rgba(25,145,196,0.04); }
 
+/* === SUPPLEMENT FACTS PANEL === */
+.supp-facts { padding: 100px 0; background: #fff; }
+.supp-facts__inner { max-width: 680px; margin: 0 auto; }
+.supp-facts__title { font-family: var(--font-heading); font-size: 38px; font-weight: 800; text-align: center; margin-bottom: 8px; letter-spacing: -0.02em; color: var(--color-text); }
+.supp-facts__title em { font-style: normal; color: var(--color-primary); }
+.supp-facts__sub { font-size: 16px; color: var(--color-text-secondary); text-align: center; margin-bottom: 40px; }
+.supp-facts__panel {
+  background: linear-gradient(180deg, #FFFDF5 0%, #FFF9E6 100%);
+  border: 2px solid #E8DFC0;
+  border-radius: 16px;
+  padding: 36px 40px 32px;
+  margin-bottom: 40px;
+}
+.supp-facts__panel-header {
+  border-bottom: 8px solid #023047;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+}
+.supp-facts__panel-header h3 {
+  font-family: var(--font-heading); font-size: 28px; font-weight: 900;
+  color: #023047; margin: 0; letter-spacing: -0.01em;
+}
+.supp-facts__serving {
+  display: flex; justify-content: space-between;
+  font-size: 13px; color: #023047; padding: 6px 0;
+  border-bottom: 1px solid #D4CBB0;
+}
+.supp-facts__col-header {
+  display: flex; justify-content: space-between;
+  font-size: 11px; font-weight: 700; color: #023047;
+  padding: 6px 0 4px; border-bottom: 1px solid #D4CBB0;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.supp-facts__row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 8px 0; border-bottom: 1px solid #E8DFC0;
+  font-size: 14px; color: #023047;
+}
+.supp-facts__row:last-child { border-bottom: none; }
+.supp-facts__row-name { font-weight: 600; flex: 1; }
+.supp-facts__row-amount { width: 100px; text-align: right; }
+.supp-facts__row-dv { width: 60px; text-align: right; font-weight: 600; }
+.supp-facts__row--indent .supp-facts__row-name { padding-left: 16px; font-weight: 400; font-size: 13px; }
+.supp-facts__row--section {
+  border-bottom: 2px solid #D4CBB0;
+  padding-top: 12px;
+  font-weight: 700;
+}
+.supp-facts__footnote {
+  font-size: 11px; color: #6B5F4A; margin-top: 12px; line-height: 1.6;
+  padding-top: 8px; border-top: 1px solid #D4CBB0;
+}
+.supp-facts__badges {
+  display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+}
+.supp-facts__badge {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; color: var(--color-text);
+}
+.supp-facts__badge-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(25,145,196,0.08); display: flex;
+  align-items: center; justify-content: center;
+}
+.supp-facts__badge-icon svg { width: 26px; height: 26px; }
+
 /* === TIMELINE — PQ "What Should I Expect" pattern (vertical center line, alternating cards) === */
 .timeline {
   padding: 120px 0 100px;
@@ -2566,6 +2632,119 @@ button { font-family: var(--font-body); }
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 7B: SUPPLEMENT FACTS PANEL                            -->
+<!-- ============================================================ -->
+<section class="supp-facts anim-section" id="supplement-facts">
+  <div class="container">
+    <div class="supp-facts__inner">
+
+      <h2 class="supp-facts__title">Here's Where The <em>System</em> Comes Together</h2>
+      <p class="supp-facts__sub">One stick pack. One glass. Every morning.</p>
+
+      <div class="supp-facts__panel">
+        <div class="supp-facts__panel-header">
+          <h3>Supplement Facts</h3>
+        </div>
+        <div class="supp-facts__serving">
+          <span>Serving Size: 1 Stick Pack (5.5g)</span>
+          <span>Servings Per Container: 30</span>
+        </div>
+        <div class="supp-facts__col-header">
+          <span></span>
+          <span>Amount Per Serving</span>
+          <span>% Daily Value</span>
+        </div>
+
+        <!-- Electrolytes -->
+        <div class="supp-facts__row supp-facts__row--section">
+          <span class="supp-facts__row-name">Sodium (from Pacific Sea Salt)</span>
+          <span class="supp-facts__row-amount">100mg</span>
+          <span class="supp-facts__row-dv">4%</span>
+        </div>
+        <div class="supp-facts__row">
+          <span class="supp-facts__row-name">Potassium</span>
+          <span class="supp-facts__row-amount">300mg</span>
+          <span class="supp-facts__row-dv">6%</span>
+        </div>
+        <div class="supp-facts__row">
+          <span class="supp-facts__row-name">Magnesium (as Aquamin&reg; MgAG)</span>
+          <span class="supp-facts__row-amount">50mg</span>
+          <span class="supp-facts__row-dv">12%</span>
+        </div>
+        <div class="supp-facts__row">
+          <span class="supp-facts__row-name">Vitamin C (as Ascorbic Acid)</span>
+          <span class="supp-facts__row-amount">90mg</span>
+          <span class="supp-facts__row-dv">100%</span>
+        </div>
+
+        <!-- Hero -->
+        <div class="supp-facts__row supp-facts__row--section">
+          <span class="supp-facts__row-name">Taurine</span>
+          <span class="supp-facts__row-amount">1,000mg</span>
+          <span class="supp-facts__row-dv">&dagger;</span>
+        </div>
+
+        <!-- Liver Botanical Blend -->
+        <div class="supp-facts__row supp-facts__row--section">
+          <span class="supp-facts__row-name">Liver Support Botanical Blend</span>
+          <span class="supp-facts__row-amount"></span>
+          <span class="supp-facts__row-dv">&dagger;</span>
+        </div>
+        <div class="supp-facts__row supp-facts__row--indent">
+          <span class="supp-facts__row-name">Milk Thistle Extract (80% Silymarin)</span>
+          <span class="supp-facts__row-amount"></span>
+          <span class="supp-facts__row-dv"></span>
+        </div>
+        <div class="supp-facts__row supp-facts__row--indent">
+          <span class="supp-facts__row-name">Dandelion Root Extract</span>
+          <span class="supp-facts__row-amount"></span>
+          <span class="supp-facts__row-dv"></span>
+        </div>
+        <div class="supp-facts__row supp-facts__row--indent">
+          <span class="supp-facts__row-name">Schisandra Berry Extract</span>
+          <span class="supp-facts__row-amount"></span>
+          <span class="supp-facts__row-dv"></span>
+        </div>
+
+        <p class="supp-facts__footnote">
+          &dagger; Daily Value not established.<br>
+          * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+        </p>
+      </div>
+
+      <!-- Trust badges -->
+      <div class="supp-facts__badges">
+        <div class="supp-facts__badge">
+          <div class="supp-facts__badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <span>Doctor<br>Formulated</span>
+        </div>
+        <div class="supp-facts__badge">
+          <div class="supp-facts__badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span>GMP<br>Certified</span>
+        </div>
+        <div class="supp-facts__badge">
+          <div class="supp-facts__badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          </div>
+          <span>Zero Sugar<br>No Fillers</span>
+        </div>
+        <div class="supp-facts__badge">
+          <div class="supp-facts__badge-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1991C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span>Made in<br>the USA</span>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
